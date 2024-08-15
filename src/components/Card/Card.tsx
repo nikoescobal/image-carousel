@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Card.module.scss';
 import { motion } from 'framer-motion';
 import useCarouselStore from '../../../store/useCarouselStore';
@@ -11,6 +11,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ src, index }) => {
   const { currentIndex } = useCarouselStore();
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     if (containerRef.current && index === currentIndex) {
@@ -29,7 +30,13 @@ const Card: React.FC<CardProps> = ({ src, index }) => {
         transition: { duration: 0.5, ease: 'easeOut' },
       }}
     >
-      <img src={src} alt={`Image ${index + 1}`} className={styles.image} />
+      <img
+        src={src}
+        alt={`Image ${index + 1}`}
+        className={`${styles.image} ${!isLoaded ? styles.blur : ''}`}
+        onLoad={() => setIsLoaded(true)}
+        loading="lazy"
+      />
     </motion.div>
   );
 };

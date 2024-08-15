@@ -21,22 +21,21 @@ const ImageCarousel: React.FC = () => {
     return `https://picsum.photos/800/400.webp?random&t=${Math.random()}`;
   };
 
-  // Preload a large number of images initially
+  // Preload initial set of images
   useEffect(() => {
     const fetchImages = async () => {
-      const initialImages = Array.from({ length: 15 }, fetchNewImage); // Fetch 15 images initially
+      const initialImages = Array.from({ length: 15 }, fetchNewImage);
       setImages(initialImages);
     };
 
     fetchImages();
   }, [setImages]);
 
-  // Preload additional images as needed
+  // Automatically load additional images and advance the carousel
   useEffect(() => {
     if (isAutoPlaying) {
       const interval = setInterval(() => {
         if (currentIndex >= images.length - 3) {
-          // Preload more images when 3 or less remain
           const moreImages = Array.from({ length: 6 }, fetchNewImage);
           setImages([...images, ...moreImages]);
         }
