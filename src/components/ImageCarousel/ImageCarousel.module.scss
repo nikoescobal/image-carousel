@@ -1,0 +1,19 @@
+@use '../../styles/breakpoints' as *;
+
+.carouselWrapper {
+  max-width: 800px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.carouselContainer {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.cardsWrapper {
+  display: flex;
+  gap: 16px;
+  padding: 10px;
+}
