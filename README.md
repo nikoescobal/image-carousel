@@ -22,6 +22,7 @@ Create an image carousel that cycles through images fetched from an endpoint (di
     ]
   }
 }
+```
 
 ## Approach
 
