@@ -21,20 +21,24 @@ const ImageCarousel: React.FC = () => {
     return `https://picsum.photos/800/400.webp?random&t=${Math.random()}`;
   };
 
+  // Preload a large number of images initially
   useEffect(() => {
     const fetchImages = async () => {
-      const initialImages = Array.from({ length: 6 }, fetchNewImage);
+      const initialImages = Array.from({ length: 15 }, fetchNewImage); // Fetch 15 images initially
       setImages(initialImages);
     };
 
     fetchImages();
   }, [setImages]);
 
+  // Preload additional images as needed
   useEffect(() => {
     if (isAutoPlaying) {
       const interval = setInterval(() => {
-        if (currentIndex === images.length - 1) {
-          setImages([...images, fetchNewImage()]);
+        if (currentIndex >= images.length - 3) {
+          // Preload more images when 3 or less remain
+          const moreImages = Array.from({ length: 6 }, fetchNewImage);
+          setImages([...images, ...moreImages]);
         }
         nextImage();
       }, autoPlayInterval);
@@ -84,7 +88,8 @@ const ImageCarousel: React.FC = () => {
             }}
             onRightClick={() => {
               if (currentIndex === images.length - 1) {
-                setImages([...images, fetchNewImage()]);
+                const moreImages = Array.from({ length: 6 }, fetchNewImage);
+                setImages([...images, ...moreImages]);
               }
               nextImage();
             }}
