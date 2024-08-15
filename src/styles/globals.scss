@@ -1,0 +1,9 @@
+@use './reset' as *;
+@use './breakpoints' as *;
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
