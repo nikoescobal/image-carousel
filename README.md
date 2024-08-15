@@ -26,8 +26,8 @@ Create an image carousel that cycles through images fetched from an endpoint (di
 ## Approach
 
 1. Fetching Images
-We used the https://picsum.photos/ API to fetch random images. The endpoint provides randomly generated images of the same dimensions (800x400), ensuring a consistent look and feel for the carousel.
-Initially, we preloaded a set of 15 images to ensure that the user experience is smooth even when the carousel auto-plays or the user rapidly clicks the navigation buttons.
+https://picsum.photos/ API is used to fetch random images. The endpoint provides randomly generated images of the same dimensions (800x400), ensuring a consistent look and feel for the carousel.
+Initially, I preloaded a set of 15 images to ensure that the user experience is smooth even when the carousel auto-plays or the user rapidly clicks the navigation buttons.
 
 2. Auto-play Functionality
 The carousel automatically cycles through images every 3 seconds using the setInterval function.
@@ -44,15 +44,17 @@ The currently active image is always centered within the viewport, ensuring opti
 The component is styled using SCSS with breakpoints for different screen sizes to ensure a consistent and responsive layout.
 
 5. Smooth Visual Transitions
-We utilized framer-motion to animate the image transitions, ensuring a smooth and visually appealing experience.
+Framer-motion is utilized to animate the image transitions, ensuring a smooth and visually appealing experience.
 A blur effect is applied to images while they are loading, providing a seamless transition as images load.
-6. Optimizations
 
+6. Optimizations
 Lazy Loading: Images are lazy-loaded using the loading="lazy" attribute, reducing the initial load time.
-Efficient State Management: We used Zustand for managing carousel state, keeping the code clean and efficient. The carousel state includes the current index, images array, auto-play status, and interval duration.
-Avoiding Index Resets: We ensured that the carousel does not reset to the first image after reaching the end but instead continues by adding more images dynamically.
+Efficient State Management: Zustand is being used to manage the carousel state, keeping the code clean and efficient. The carousel state includes the current index, images array, auto-play status, and interval duration.
+Avoiding Index Resets: The carousel does not reset to the first image after reaching the end but instead continues by adding more images dynamically.
 
 ## Project Structure
+
+Initially, I intended on using Atomic Design, but decided against it as the project is quite small. By breaking down the image carousel into smaller components, it makes the code more readable and easy to manage.
 
 ImageCarousel.tsx: The main carousel component that handles the fetching, rendering, and auto-play functionality.
 Card.tsx: A reusable card component that displays each image. It includes lazy loading and blur effects for smooth image loading.
