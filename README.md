@@ -57,8 +57,12 @@ Avoiding Index Resets: The carousel does not reset to the first image after reac
 
 Initially, I intended on using Atomic Design, but decided against it as the project is quite small. By breaking down the image carousel into smaller components, it makes the code more readable and easy to manage.
 
-ImageCarousel.tsx: The main carousel component that handles the fetching, rendering, and auto-play functionality.
-Card.tsx: A reusable card component that displays each image. It includes lazy loading and blur effects for smooth image loading.
-CarouselControls.tsx: A component for the left and right navigation arrows.
-useCarouselStore.ts: Zustand store for managing the carousel's state (e.g., current index, images array, auto-play status).
-Loader.tsx: A simple loader component displayed while images are being fetched.
+>`ImageCarousel.tsx`: The main carousel component that handles the fetching, rendering, and auto-play functionality.
+
+>`Card.tsx`: A reusable card component that displays each image. It includes lazy loading and blur effects for smooth image loading.
+
+>`CarouselControls.tsx`: A component for the left and right navigation arrows.
+
+>`useCarouselStore.ts`: Zustand store for managing the carousel's state (e.g., current index, images array, auto-play status).
+
+>`Loader.tsx`: A simple loader component displayed while images are being fetched.
